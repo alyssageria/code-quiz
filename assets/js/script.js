@@ -1,6 +1,7 @@
 var startButton = document.querySelector(".start-btn");
 var startPage = document.querySelector(".start-container");
 var quizPage = document.querySelector(".quiz-container");
+var finalPage = document.querySelector(".final-page");
 var timerEl = document.getElementById("timer");
 var questionEL = document.getElementById("question");
 var aText = document.getElementById("a-text");
@@ -12,6 +13,7 @@ var correctWrong = document.getElementById("correct-wrong");
 
 //hides my quiz page at start
 quizPage.style.display = "none";
+finalPage.style.display = "none";
 
 //when i click on the start button, the start page displays as none and quiz page displays flex
 
@@ -19,7 +21,7 @@ startButton.addEventListener("click", function () {
     startPage.style.display = "none";
     quizPage.style.display = "flex";
     countDown();
-    showQuestion();
+    showQuestion(0);
 });
 
 function countDown() {
@@ -38,7 +40,7 @@ function countDown() {
     //check for right or wrong answer, if answer is wrong subtract time left
 }
 
-function showQuestion() {
+function showQuestion(index) {
     var questions = [
         {
             question: 'What does CSS stand for?',
@@ -70,7 +72,7 @@ function showQuestion() {
 
         },
         {
-            question: 'what color is the sky?',
+            question: 'hellloooooo?',
             answers: [
                 { text: 'Blue', correct: true },
                 { text: 'Green', correct: false },
@@ -91,28 +93,95 @@ function showQuestion() {
         }
     ]
 
-    for (var i = 0; i < questions.length; i++) {
-        document.getElementById("question").innerHTML = questions[i].question;
-        document.getElementById("a-text").innerHTML = questions[i].answers[0].text;
-        document.getElementById("b-text").innerHTML = questions[i].answers[1].text;
-        document.getElementById("c-text").innerHTML = questions[i].answers[2].text;
-        document.getElementById("d-text").innerHTML = questions[i].answers[3].text;
+
+
+    document.getElementById("question").innerHTML = questions[index].question;
+    document.getElementById("a-text").innerHTML = questions[index].answers[0].text;
+    document.getElementById("b-text").innerHTML = questions[index].answers[1].text;
+    document.getElementById("c-text").innerHTML = questions[index].answers[2].text;
+    document.getElementById("d-text").innerHTML = questions[index].answers[3].text;
+
+    var empty = '';
 
 
 
-        console.log(questions[i].question);
 
-        aText.addEventListener('click', function (i) {
-            console.log(questions[i]);
-            if (questions[i].answers[0].correct.value === true) {
+    if (index <= 3) {
+        aText.addEventListener('click', function () {
+            console.log(questions[index]);
+            if (questions[index].answers[0].correct === true) {
                 correctWrong.innerHTML = 'Correct!';
+                index++;
+                return showQuestion(index);
             } else {
                 correctWrong.innerHTML = 'Wrong!';
+                index++;
+                return showQuestion(index);
             }
         });
+
+        bText.addEventListener('click', function () {
+            console.log(questions[index]);
+            if (questions[index].answers[1].correct === true) {
+                correctWrong.innerHTML = 'Correct!';
+                index++;
+                return showQuestion(index);
+            } else {
+                correctWrong.innerHTML = 'Wrong!';
+                index++;
+                return showQuestion(index);
+            }
+        });
+
+        cText.addEventListener('click', function () {
+            console.log(questions[index]);
+            if (questions[index].answers[2].correct === true) {
+                correctWrong.innerHTML = 'Correct!';
+                index++;
+                return showQuestion(index);
+            } else {
+                correctWrong.innerHTML = 'Wrong!';
+                index++;
+                return showQuestion(index);
+            }
+        });
+
+        dText.addEventListener('click', function () {
+            console.log(questions[index]);
+            if (questions[index].answers[3].correct === true) {
+                correctWrong.innerHTML = 'Correct!';
+                return showQuestion(index);
+            } else {
+                correctWrong.innerHTML = 'Wrong!';
+                return showQuestion(index);
+            }
+        });
+    } else {
+        quizPage.style.display = "none";
+        finalPage.style.display = "flex";
     }
-
-
 
 }
 
+// for (var i = 0; i < questions.length; i++) {
+//     document.getElementById("question").innerHTML = questions[i].question;
+//     document.getElementById("a-text").innerHTML = questions[i].answers[0].text;
+//     document.getElementById("b-text").innerHTML = questions[i].answers[1].text;
+//     document.getElementById("c-text").innerHTML = questions[i].answers[2].text;
+//     document.getElementById("d-text").innerHTML = questions[i].answers[3].text;
+
+
+
+//     console.log(questions[i].question);
+
+
+// }
+
+// (questions[index].answers[0].correct === false ||
+//     questions[index].answers[1].correct === false ||
+//     questions[index].answers[2].correct === false ||
+//     questions[index].answers[3].correct === false)
+
+function showFinalPage() {
+    finalPage.style.display = "flex";
+}

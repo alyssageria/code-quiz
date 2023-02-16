@@ -124,3 +124,39 @@ h2 {
     background-color: var(--white);
     color: var(--black);
 }
+
+.final-page {
+    background-color: var(--lightblue);
+    border: 2px solid var(--darkblue);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-done {
+    margin: 0;
+}
+
+#final-score {
+    font-size: 150%;
+}
+
+label {
+    font-size: 125%;
+}
+
+input {
+    font-size: 150%;
+}
+
+
+.final-button {
+    border-radius: 0.5rem;
+    font-size: 20px;
+    background-color: var(--black);
+    color: var(--white);
+    height: 40%;
+    margin: 30px 0;
+}
