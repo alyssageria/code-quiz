@@ -9,7 +9,7 @@ var bText = document.getElementById("b-text");
 var cText = document.getElementById("c-text");
 var dText = document.getElementById("d-text");
 var correctWrong = document.getElementById("correct-wrong");
-
+var timeLeft = 120;
 
 //hides my quiz page at start
 quizPage.style.display = "none";
@@ -25,7 +25,7 @@ startButton.addEventListener("click", function () {
 });
 
 function countDown() {
-    var timeLeft = 120;
+
 
     var timerInterval = setInterval(function () {
         timerEl.innerHTML = 'Timer: ' + timeLeft;
@@ -38,6 +38,14 @@ function countDown() {
     }, 1000);
 
     //check for right or wrong answer, if answer is wrong subtract time left
+}
+
+function deductTime(seconds) {
+    timeLeft -= seconds;
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
 }
 
 function showQuestion(index) {
@@ -115,6 +123,7 @@ function showQuestion(index) {
                 return showQuestion(index);
             } else {
                 correctWrong.innerHTML = 'Wrong!';
+                deductTime(10);
                 index++;
                 return showQuestion(index);
             }
@@ -128,6 +137,7 @@ function showQuestion(index) {
                 return showQuestion(index);
             } else {
                 correctWrong.innerHTML = 'Wrong!';
+                deductTime(10);
                 index++;
                 return showQuestion(index);
             }
@@ -141,6 +151,7 @@ function showQuestion(index) {
                 return showQuestion(index);
             } else {
                 correctWrong.innerHTML = 'Wrong!';
+                deductTime(10);
                 index++;
                 return showQuestion(index);
             }
@@ -153,12 +164,15 @@ function showQuestion(index) {
                 return showQuestion(index);
             } else {
                 correctWrong.innerHTML = 'Wrong!';
+                deductTime(10);
+                index++;
                 return showQuestion(index);
             }
         });
     } else {
         quizPage.style.display = "none";
         finalPage.style.display = "flex";
+        document.getElementById("final-score").innerHTML = "Your final score is: " + timeLeft;
     }
 
 }
