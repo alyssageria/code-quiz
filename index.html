@@ -20,7 +20,8 @@
         <div id="start-page">
             <div id="start-text">
                 <h2>Code Quiz Challenge</h2>
-                <p class="start-p">Welcome to the Code Quiz Challenge! Please answer the questions to the best of your
+                <p class="start-p">Welcome to the Code Quiz Challenge! This quiz will be timed, and time will be
+                    deducted for every question answered wrong. Please answer the questions to the best of your
                     ability, and
                     click start to begin.</p>
                 <button class="start-btn">Start</button>
@@ -40,13 +41,27 @@
         </div>
     </div>
     <div class="final-page">
-        <h2 class="all-done">All Done!</h2>
-        <p id="final-score">Your final score is:</p>
-        <form>
-            <label>Enter Initials</label>
-            <input type="text">
-            <button class="final-button">Submit</button>
-        </form>
+        <div class="final-text">
+            <h2 class="all-done">All Done!</h2>
+            <p id="final-score">Your final score is:</p>
+            <form class="final-form">
+                <label>Enter Initials:</label>
+                <input id="initials">
+                <button class="final-button">Submit</button>
+            </form>
+            <button class="play-again-btn">Play Again!</button>
+            <div class="message-div"></div>
+        </div>
+
+    </div>
+    <div class="highscores-container">
+        <div class="highscore-text">
+            <h3>Highscores</h3>
+            <ul id="highscore-list"></ul>
+            <button id="highscore-button" class="go-back">Go Back</button>
+            <button id="highscore-button" class="go-back-2">Go Back</button>
+            <button id=" highscore-button" class="clear-highscore">Clear Highscores</button>
+        </div>
     </div>
 
 
